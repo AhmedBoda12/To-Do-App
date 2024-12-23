@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:to_do_app/services/theme_services.dart';
 import 'package:to_do_app/theme/theme.dart';
+import 'package:to_do_app/ui/pages/add_task_page.dart';
 
 import 'ui/pages/home_page.dart';
 
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
       theme: Themes.light,
       darkTheme: Themes.dark,
       themeMode: ThemeServices().theme,
-      home: HomePage(),
+      home: AddTaskPage(),
     );
   }
 }

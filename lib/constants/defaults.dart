@@ -10,12 +10,13 @@ class AppDefaults {
 
   static const double inputFieldRadius = 16.0;
   static const OutlineInputBorder outlineInputBorder = OutlineInputBorder(
-      borderRadius: BorderRadius.all(
-        Radius.circular(AppDefaults.borderRadius),
-      ),
-      borderSide: BorderSide.none);
+    borderRadius: BorderRadius.all(
+      Radius.circular(AppDefaults.inputFieldRadius),
+    ),
+  );
   static OutlineInputBorder focusedOutlineInputBorder =
       outlineInputBorder.copyWith(
+    borderRadius: BorderRadius.circular(AppDefaults.inputFieldRadius),
     borderSide: const BorderSide(width: 2, color: AppColors.primaryClr),
   );
 
