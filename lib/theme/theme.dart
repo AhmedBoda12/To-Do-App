@@ -3,8 +3,6 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:to_do_app/theme/app_colors.dart';
 
-
-
 class Themes {
   static final light = ThemeData(
     primaryColor: AppColors.primaryClr,
