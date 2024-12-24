@@ -11,6 +11,7 @@ class MyButton extends StatelessWidget {
     return FilledButton(
       onPressed: tap,
       style: FilledButton.styleFrom(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         minimumSize: Size(150, 50),
         backgroundColor: AppColors.primaryClr,
       ),
