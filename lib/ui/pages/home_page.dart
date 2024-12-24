@@ -6,12 +6,14 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:to_do_app/constants/defaults.dart';
 import 'package:to_do_app/constants/ghaps.dart';
+import 'package:to_do_app/models/task.dart';
 import 'package:to_do_app/services/notification_services.dart';
 import 'package:to_do_app/services/theme_services.dart';
 import 'package:to_do_app/theme/app_colors.dart';
 import 'package:to_do_app/theme/theme.dart';
 import 'package:to_do_app/ui/pages/add_task_page.dart';
 import 'package:to_do_app/ui/widgets/button.dart';
+import 'package:to_do_app/ui/widgets/task_tile.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -40,8 +42,6 @@ class _HomePageState extends State<HomePage> {
               onPressed: () {
                 setState(() {
                   ThemeServices().switchTheme();
-                  // notifyHelper.displayNotifications(title: 'Hello, Ahmed', body: 'New');
-                  notifyHelper.scheduleNotifications();
                 });
               },
               icon: Icon(Get.isDarkMode ? Icons.light_mode : Icons.dark_mode)),
@@ -123,7 +123,18 @@ class _HomePageState extends State<HomePage> {
   }
 
   _tasksContainer() {
-    return _emptyTasks();
+    return TaskTile(
+      task: Task(
+        id: 1,
+        title: 'Title',
+        note: 'new note',
+        isCompleted: 0,
+        color: 0,
+        date: '2022',
+        startTime: '20:05',
+        endTime: '10:80',
+      ),
+    );
   }
 
   Padding _emptyTasks() {

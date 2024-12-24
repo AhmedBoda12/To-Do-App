@@ -67,4 +67,13 @@ class Themes {
       color: Get.isDarkMode ? Colors.grey[200] : Colors.black,
     ));
   }
+
+ static TextStyle customStyle({double? size,required bool bold, Color? fontColor}) {
+    return GoogleFonts.lato(
+        textStyle: TextStyle(
+      fontSize: size ?? 18,
+      fontWeight: bold ? FontWeight.bold : FontWeight.w400,
+      color: fontColor ?? Colors.white,
+    ));
+  }
 }

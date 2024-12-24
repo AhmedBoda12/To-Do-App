@@ -6,7 +6,7 @@ class AppDefaults {
   static const double padding16 = 16.0;
   static const double padding24 = 24.0;
 
-  static const double borderRadius = 24.0;
+  static const double borderRadius = 12.0;
 
   static const double inputFieldRadius = 16.0;
   static const OutlineInputBorder outlineInputBorder = OutlineInputBorder(
