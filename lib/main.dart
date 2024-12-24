@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
       theme: Themes.light,
       darkTheme: Themes.dark,
       themeMode: ThemeServices().theme,
-      home: AddTaskPage(),
+      home: HomePage(),
     );
   }
 }
