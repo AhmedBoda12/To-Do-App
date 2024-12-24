@@ -11,9 +11,56 @@ class TaskTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return Dismissible(
+      key: Key(task.id.toString()),
+      onDismissed: (direction) {},
+      background: Container(
+        color: task.isCompleted == 0 ? Colors.green : Colors.amber,
+        alignment: Alignment.centerLeft,
+        padding: const EdgeInsets.only(left: 20),
+        child: Row(
+          children: [
+            Icon(task.isCompleted == 0 ? Icons.done : Icons.task,
+                color: Colors.white),
+            gapW8,
+            Text(
+              task.isCompleted == 0 ? 'Completed' : 'TODO',
+              style: Themes.customStyle(
+                bold: false,
+                size: 14,
+              ),
+            ),
+          ],
+        ),
+      ),
+      secondaryBackground: Container(
+        color: Colors.red,
+        alignment: Alignment.centerRight,
+        padding: const EdgeInsets.only(right: 20),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            const Icon(Icons.delete, color: Colors.white),
+            gapW8,
+            Text(
+              'Delete',
+              style: Themes.customStyle(
+                bold: false,
+                size: 14,
+              ),
+            ),
+          ],
+        ),
+      ),
+      child: _taskBody(),
+    );
+  }
+
+  Container _taskBody() {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: AppDefaults.padding16),
-      margin: EdgeInsets.symmetric(horizontal: AppDefaults.padding16),
+      margin:
+          EdgeInsets.symmetric(horizontal: AppDefaults.padding16, vertical: 4),
       decoration: BoxDecoration(
           color: _getColor(task.color),
           borderRadius: BorderRadius.circular(AppDefaults.borderRadius)),
@@ -21,9 +68,9 @@ class TaskTile extends StatelessWidget {
         children: [
           Expanded(
               child: SingleChildScrollView(
-                child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
                 gapH16,
                 Text(
                   task.title!,
@@ -50,9 +97,9 @@ class TaskTile extends StatelessWidget {
                   style: Themes.customStyle(bold: false, size: 16),
                 ),
                 gapH16,
-                            ],
-                          ),
-              )),
+              ],
+            ),
+          )),
           RotatedBox(
             quarterTurns: 3,
             child: Text(

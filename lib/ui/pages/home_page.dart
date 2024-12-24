@@ -1,11 +1,13 @@
 import 'package:date_picker_timeline/date_picker_timeline.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:to_do_app/constants/defaults.dart';
 import 'package:to_do_app/constants/ghaps.dart';
+import 'package:to_do_app/controllers/task_controller.dart';
 import 'package:to_do_app/models/task.dart';
 import 'package:to_do_app/services/notification_services.dart';
 import 'package:to_do_app/services/theme_services.dart';
@@ -24,7 +26,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   DateTime selectedDate = DateTime.now();
-
+  TaskController taskController = TaskController();
   late NotifyHelper notifyHelper;
   @override
   void initState() {
@@ -123,16 +125,22 @@ class _HomePageState extends State<HomePage> {
   }
 
   _tasksContainer() {
-    return TaskTile(
-      task: Task(
-        id: 1,
-        title: 'Title',
-        note: 'new note',
-        isCompleted: 0,
-        color: 0,
-        date: '2022',
-        startTime: '20:05',
-        endTime: '10:80',
+    return Expanded(
+      child: ListView.builder(
+        itemBuilder: (context, index) {
+          var task = taskController.tasks[index];
+          return AnimationConfiguration.staggeredList(
+            position: index,
+            duration: const Duration(milliseconds: 1350),
+            child: SlideAnimation(
+              horizontalOffset: 300,
+              child: FadeInAnimation(
+                child: TaskTile(task: task),
+              ),
+            ),
+          );
+        },
+        itemCount: taskController.tasks.length,
       ),
     );
   }

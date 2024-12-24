@@ -3,6 +3,8 @@ import 'package:to_do_app/theme/app_colors.dart';
 
 class AppDefaults {
   static const double padding8 = 8.0;
+    static const double padding12 = 12.0;
+
   static const double padding16 = 16.0;
   static const double padding24 = 24.0;
 
